@@ -94,8 +94,13 @@ public class BodySourceView : MonoBehaviour
             {
                 continue;
             }
+            // ジェスチャー取得、比較
+            if(body.HandLeftState == Kinect.HandState.Open)
+            {
+                Debug.Log("ジェスチャー認識");
+            }
             
-            if(body.IsTracked)
+            if (body.IsTracked)
             {
                 if(!_Bodies.ContainsKey(body.TrackingId))
                 {

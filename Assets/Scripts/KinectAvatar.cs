@@ -76,8 +76,8 @@ public class KinectAvatar : MonoBehaviour {
         }
 
 		Kinect.Joint sourceJoint = body.Joints[Kinect.JointType.SpineBase];
-		Debug.Log("Z:" + sourceJoint.Position.Z);
-		if (sourceJoint.Position.Z <= 0.2 || sourceJoint.Position.Z >= 1.5) return;
+		//Debug.Log("Z:" + sourceJoint.Position.Z);
+		//if (sourceJoint.Position.Z <= 0.2 || sourceJoint.Position.Z >= 1.5) return;
         
 
         // 床の傾きを取得する
