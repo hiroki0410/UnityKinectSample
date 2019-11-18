@@ -75,7 +75,21 @@ public class KinectAvatar : MonoBehaviour {
             return;
         }
 
-		Kinect.Joint sourceJoint = body.Joints[Kinect.JointType.SpineBase];
+        // ジェスチャー取得、比較
+        if (body.HandLeftState == Kinect.HandState.Closed)
+        {
+            Debug.Log("グー");
+        }
+        if (body.HandLeftState == Kinect.HandState. Lasso)
+        {
+            Debug.Log("チョキ");
+        }
+        if (body.HandLeftState == Kinect.HandState.Open)
+        {
+            Debug.Log("パー");
+        }
+
+        Kinect.Joint sourceJoint = body.Joints[Kinect.JointType.SpineBase];
 		//Debug.Log("Z:" + sourceJoint.Position.Z);
 		//if (sourceJoint.Position.Z <= 0.2 || sourceJoint.Position.Z >= 1.5) return;
         
