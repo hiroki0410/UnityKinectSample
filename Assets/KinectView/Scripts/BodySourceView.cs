@@ -94,8 +94,9 @@ public class BodySourceView : MonoBehaviour
             {
                 continue;
             }
+           
             
-            if(body.IsTracked)
+            if (body.IsTracked)
             {
                 if(!_Bodies.ContainsKey(body.TrackingId))
                 {

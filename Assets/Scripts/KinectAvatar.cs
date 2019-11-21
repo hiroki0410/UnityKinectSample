@@ -75,9 +75,23 @@ public class KinectAvatar : MonoBehaviour {
             return;
         }
 
-		Kinect.Joint sourceJoint = body.Joints[Kinect.JointType.SpineBase];
-		Debug.Log("Z:" + sourceJoint.Position.Z);
-		if (sourceJoint.Position.Z <= 0.2 || sourceJoint.Position.Z >= 1.5) return;
+        // ジェスチャー取得、比較
+        if (body.HandLeftState == Kinect.HandState.Closed)
+        {
+            Debug.Log("グー");
+        }
+        if (body.HandLeftState == Kinect.HandState. Lasso)
+        {
+            Debug.Log("チョキ");
+        }
+        if (body.HandLeftState == Kinect.HandState.Open)
+        {
+            Debug.Log("パー");
+        }
+
+        Kinect.Joint sourceJoint = body.Joints[Kinect.JointType.SpineBase];
+		//Debug.Log("Z:" + sourceJoint.Position.Z);
+		//if (sourceJoint.Position.Z <= 0.2 || sourceJoint.Position.Z >= 1.5) return;
         
 
         // 床の傾きを取得する
@@ -161,8 +175,8 @@ public class KinectAvatar : MonoBehaviour {
         RightUpLeg.transform.rotation = KneeRight *  Quaternion.AngleAxis( -90, new Vector3( 0, 0, 1 ) );
         RightLeg.transform.rotation = AnkleRight *  Quaternion.AngleAxis( -90, new Vector3( 0, 0, 1 ) );
 
-	LeftUpLeg.transform.rotation = KneeLeft *  Quaternion.AngleAxis( -90, new Vector3( 0, 0, 1 ) );
-	LeftLeg.transform.rotation = AnkleLeft * Quaternion.AngleAxis( -90, new Vector3( 0, 0, 1 ) );
+	    LeftUpLeg.transform.rotation = KneeLeft *  Quaternion.AngleAxis( -90, new Vector3( 0, 0, 1 ) );
+	    LeftLeg.transform.rotation = AnkleLeft * Quaternion.AngleAxis( -90, new Vector3( 0, 0, 1 ) );
 
         // モデルの回転を設定する
         Ref.transform.rotation = q;
@@ -170,5 +184,7 @@ public class KinectAvatar : MonoBehaviour {
         // モデルの位置を移動する
         var pos = body.Joints[JointType.SpineMid].Position;
         Ref.transform.position = new Vector3( -pos.X, pos.Y, -pos.Z );
+
+        var RightHandPos = body.Joints[JointType.HandRight].Position;
     }
 }
